@@ -5,12 +5,10 @@ class HelloWorld
     {
         Console.WriteLine("Input 4 numbers:");
         int minimal = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < 3; i++)
-            {
+            for (int i = 0; i < 3; i++){
             int a = Convert.ToInt32(Console.ReadLine());
-            if (minimal > a){
+            if (minimal > a)
                 minimal = a;
-            }
             }
             Console.WriteLine("The min number: " + minimal);
     }
