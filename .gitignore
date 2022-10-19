@@ -10,6 +10,10 @@
 *.userosscache
 *.sln.docstates
 
+#my ignored file:
+*.sln
+Op_university
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
