@@ -8,15 +8,15 @@ namespace JobDatabase {
     public class Position {
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Terms { get; set; }
-        public string PaymentConditions { get; set; }
+        public string Salary { get; set; }
+        public bool IsProvidesHousing { get; set; }
         public List<IExpertRequirements> Requirements { get; set; }
 
-        public Position(string title, string description, string terms, string paymentConditions, IExpertRequirements requirements) {
+        public Position(string title, string description, string terms, bool isProvidesHousing) {
             Title = title;
             Description = description;
-            Terms = terms;
-            PaymentConditions = paymentConditions;
+            Salary = terms;
+            IsProvidesHousing = isProvidesHousing;
             Requirements = new List<IExpertRequirements>();
         }
 

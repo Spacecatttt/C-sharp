@@ -19,7 +19,6 @@ namespace JobDatabase {
         public void AddVacancy(Position position) {
             Vacancies.Add(position);
         }
-
         public void RemoveVacancy(Position position) {
             Vacancies.Remove(position);
         }
