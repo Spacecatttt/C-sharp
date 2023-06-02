@@ -27,13 +27,13 @@ namespace JobDatabase
                 }
             }
             int i = 1;
-            string fileName = String.Empty;
-            while (File.Exists(fileName)) {
-                fileName = directoryPath + i.ToString();
+            string filePath = directoryPath + "Вакансія" + i.ToString()+".docx";
+            while (File.Exists(filePath)) {
                 i++;
+                filePath = directoryPath + "Вакансія" + i.ToString() + ".docx";
             }
             string text = position.GetDescription();
-            using (WordprocessingDocument wordDocument = WordprocessingDocument.Create(fileName, WordprocessingDocumentType.Document)) {
+            using (WordprocessingDocument wordDocument = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document)) {
                 MainDocumentPart mainPart = wordDocument.AddMainDocumentPart();
 
                 // Створення документу і його вмісту

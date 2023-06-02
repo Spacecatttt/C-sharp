@@ -32,7 +32,9 @@ namespace JobDatabase {
                 positions.AddRange(firm.Vacancies);
 
             if (positions.Count == 0)
-                Console.WriteLine("Вакансій немає\n");
+                Console.WriteLine("\nВакансій немає");
+            else if(positions.Count < start) 
+                Console.WriteLine("\nБільше вакансій немає");
             else {
                 int end = Math.Min(start + 5, positions.Count);
                 for (int i = start; i < end; i++) {

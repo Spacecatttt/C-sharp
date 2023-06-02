@@ -17,12 +17,12 @@ namespace JobDatabase {
         public Firm Firm { get; set; }
 
         public string GetTitleAndSalary() {
-            return $"{Title}    Зарплата:{Salary}";
+            return $"Посада: {Title}    Зарплата: {Salary}";
         }
         public string GetDescription() {
-            return $"{Title}    Зарплата:{Salary}\n" +
+            return $"Посада: {Title}    Зарплата: {Salary}\n" +
                    $"Контактна інформація: {Firm.ContactInfo}\n" +
-                   $"опис: {Description}\n" + GetRequirements();                   
+                   $"Опис: {Description}\n" + GetRequirements();                   
         }
         string GetRequirements() {
             string text = string.Empty;

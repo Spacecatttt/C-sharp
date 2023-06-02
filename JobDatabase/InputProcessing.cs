@@ -14,12 +14,12 @@ namespace JobDatabase {
             bool exit = false;
 
             while (!exit) {
-                Console.WriteLine("--- Меню: ---");
+                Console.WriteLine("\n--- Меню: ---");
                 Console.WriteLine("1. Допомога");
                 Console.WriteLine("2. Зареєструвати вакансію");
                 Console.WriteLine("3. Пошук вакансії");
                 Console.WriteLine("0. Вихід");
-                Console.WriteLine("Виберіть опцію: ");
+                Console.Write("Виберіть опцію: ");
                 string input = Console.ReadLine();
 
                 switch (input) {
@@ -268,7 +268,7 @@ namespace JobDatabase {
         }
         void ActionsWithVacancy() {
             string input = String.Empty;
-            while (String.IsNullOrEmpty(input) || String.IsNullOrWhiteSpace(input)) {
+            while (String.IsNullOrWhiteSpace(input)) {
                 Console.Write("Ведіть номер вакансії: ");
                 input = Console.ReadLine();
             }
@@ -355,7 +355,7 @@ namespace JobDatabase {
             while (!exit) {
                 Console.WriteLine("\n--- Виберіть тип друку ---\n");
                 Console.WriteLine("1. .docx документ");
-                Console.WriteLine("2. .pdf документ");
+                Console.WriteLine("2. .txt документ");
                 Console.WriteLine("0. Вийти");
 
                 Console.Write("Ваш вибір: ");
