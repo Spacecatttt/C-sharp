@@ -27,11 +27,11 @@ namespace JobDatabase {
                         break;
                     case "2":
                         // Дії для опції "Зареєструвати вакансію"
-                        RegisterVacancy(jobDatabase);
+                        RegisterVacancy();
                         break;
                     case "3":
                         // Дії для опції "Пошук вакансії"
-                        SearchVacancy(jobDatabase);
+                        SearchVacancy();
                         break;
                     case "0":
                         exit = true;
@@ -51,7 +51,7 @@ namespace JobDatabase {
             Console.WriteLine("0. Вихід - виходить з програми.");
             Console.WriteLine();
         }
-        void RegisterVacancy(JobDatabase jobDatabase) {
+        void RegisterVacancy() {
             var firm = TakeFirm();
             if (firm != null)
                 jobDatabase.AddFirm(firm);
@@ -126,7 +126,12 @@ namespace JobDatabase {
                     Console.WriteLine("Контактна інформація фірми не може бути порожньою. Будь ласка, спробуйте ще раз.");
                 }
             }
-            if (FindFirm(name) is Firm firm) {
+            Firm? firm = null;
+            try {
+                firm = FindFirm(name);
+            }
+            catch { }
+            if (firm is Firm) {
                 Console.WriteLine("Така фірма вже існує. Бажаєте використовувати її чи повернутися до головного меню?");
                 bool exit = false;
 
@@ -208,15 +213,64 @@ namespace JobDatabase {
                 }
             }
             Position newPosition = new Position(title, description, salary, isProvidesHousing);
+            exit = false;
+            while (!exit) {
+                Console.WriteLine("Бажаєте встановити вимоги до фахівця?");
+                Console.WriteLine("1. Tak");
+                Console.WriteLine("2. Ні");
+                Console.Write("Виберіть опцію: ");
+                string input = Console.ReadLine();
+                switch (input) {
+                    case "1":
+                        newPosition.SetRequirements();
+                        exit = true;
+                        break;
+                    case "2":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                        break;
+                }
+            }
 
             Console.WriteLine("\n--- Вакансія успішно створена ---\n");
 
             return newPosition;
 
         }
+        void SearchVacancy() {
+            int startIndex = 0;
+            jobDatabase.PrintPosition(startIndex);
+            startIndex += 5;
+            while (true) {
+                Console.WriteLine("\n--- Що далі? ---\n");
+                Console.WriteLine("1. Вивести ще 5 вакансій");
+                Console.WriteLine("2. Редагувати вакансію");
+                Console.WriteLine("0. Вихід");
+                Console.Write("Виберіть опцію: ");
+                string input = Console.ReadLine();
+                switch (input) {
+                    case "1":
+                        jobDatabase.PrintPosition(startIndex);
+                        startIndex += 5;
+                        break;
+                    case "2":
+                        ActionsWithVacancy();
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                        break;
+                }
+            }
+        }
+        void ActionsWithVacancy() {
+            Console.Write("Ведіть номер вакансії: ");
+            string input = Console.ReadLine();
 
 
-        void SearchVacancy(JobDatabase jobDatabase) {
         }
     }
 }

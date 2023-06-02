@@ -11,28 +11,31 @@ namespace JobDatabase {
         public JobDatabase() {
             firms = new List<Firm>();
         }
-        public bool TryGetFirm(string name,out Firm? firm) {
+        public bool TryGetFirm(string name, out Firm? firm) {
             firm = firms.FirstOrDefault(n => n.Name == name);
-            if(firm == null) 
+            if (firm == null)
                 return false;
             return true;
         }
         public void AddFirm(Firm firm) {
             firms.Add(firm);
         }
+        public void PrintPosition(int start) {
+            List<Position> positions = new List<Position>();
+            foreach (var firm in firms)
+                positions.AddRange(firm.Vacancies);
 
-        public void RemoveFirm(Firm firm) {
-            firms.Remove(firm);
-        }
-
-        public List<Position> SearchPositionsByRequirements(IExpertRequirements requirements) {
-            List<Position> matchingPositions = new List<Position>();
-
-            foreach (var firm in firms) {
-                
+            if (positions.Count == 0)
+                Console.WriteLine("Вакансій немає\n");
+            else {
+                int end = Math.Min(start + 5, positions.Count);
+                for (int i = start; i < end; i++) {
+                    Console.WriteLine($"Id: {positions[i].UniqueId}");
+                    Console.WriteLine(positions[i].GetTitleAndSalary());
+                    Console.WriteLine();
+                }
             }
-
-            return matchingPositions;
         }
     }
 }
+
