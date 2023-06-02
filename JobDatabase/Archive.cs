@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace JobDatabase {
     public class Archive {
-        private List<Firm> archivedFirms;
+        private List<Position> archivedPositions;
 
         public Archive() {
-            archivedFirms = new List<Firm>();
+            archivedPositions = new List<Position>();
         }
 
-        public void ArchiveFirm(Firm firm) {
-            archivedFirms.Add(firm);
+        public void AddArchive(Position position) {
+            archivedPositions.Add(position);
         }
 
-        public void DeleteArchivedFirm(Firm firm) {
-            archivedFirms.Remove(firm);
+        public void DeleteArchived(Position position) {
+            archivedPositions.Remove(position);
         }
     }
 }

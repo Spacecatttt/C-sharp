@@ -20,6 +20,12 @@ namespace JobDatabase {
         public void AddFirm(Firm firm) {
             firms.Add(firm);
         }
+        public Position? GetPosition(string id) {
+            List<Position> positions = new List<Position>();
+            foreach (var firm in firms)
+                positions.AddRange(firm.Vacancies);
+            return positions.FirstOrDefault(x => x.UniqueId.ToString() == id);
+        }
         public void PrintPosition(int start) {
             List<Position> positions = new List<Position>();
             foreach (var firm in firms)

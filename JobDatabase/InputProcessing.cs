@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobDatabase.Advertisement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace JobDatabase {
     public class InputProcessing {
 
         JobDatabase jobDatabase = new JobDatabase(); // екземпляр JobDatabase для роботи з вакансіями
+        Archive archive = new Archive();
         public void Start() {
             bool exit = false;
 
@@ -173,7 +175,7 @@ namespace JobDatabase {
             while (string.IsNullOrEmpty(description)) {
                 Console.Write("Введіть опис вакансії: ");
                 description = Console.ReadLine();
-                if (title == "0")
+                if (description == "0")
                     return null;
                 if (string.IsNullOrEmpty(description)) {
                     Console.WriteLine("Опис вакансії не може бути порожнім. Будь ласка, спробуйте ще раз.");
@@ -182,8 +184,6 @@ namespace JobDatabase {
             while (string.IsNullOrEmpty(salary)) {
                 Console.Write("Введіть зарплату для вакансії: ");
                 salary = Console.ReadLine();
-                if (title == "0")
-                    return null;
                 if (string.IsNullOrEmpty(salary)) {
                     Console.WriteLine("Зарплата для вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
                 }
@@ -267,10 +267,117 @@ namespace JobDatabase {
             }
         }
         void ActionsWithVacancy() {
-            Console.Write("Ведіть номер вакансії: ");
-            string input = Console.ReadLine();
+            string input = String.Empty;
+            while (String.IsNullOrEmpty(input) || String.IsNullOrWhiteSpace(input)) {
+                Console.Write("Ведіть номер вакансії: ");
+                input = Console.ReadLine();
+            }
+            var position = jobDatabase.GetPosition(input);
+            if (position == null) {
+                Console.WriteLine("Такої вакансії немає");
+                return;
+            } else {
+                Console.WriteLine(position.GetDescription());
+                while (true) {
+                    Console.WriteLine("\n--- Виберіть дію ---\n");
+                    Console.WriteLine("1. Архівувати");
+                    Console.WriteLine("2. Видалити");
+                    Console.WriteLine("3. Змінити назву");
+                    Console.WriteLine("4. Змінити опис");
+                    Console.WriteLine("5. Змінити зарплату");
+                    Console.WriteLine("6. Створення файлу вакансії для друку");
+                    Console.WriteLine("0. Вийти");
 
+                    Console.Write("Ваш вибір: ");
+                    input = Console.ReadLine();
+                    switch (input) {
+                        case "1":
+                            archive.AddArchive(position);
+                            position.Firm.Vacancies.Remove(position);
+                            break;
+                        case "2":
+                            if (position.Firm.Vacancies.Remove(position)) {
+                                Console.WriteLine("\n--- Вакансія успішно видалена ---\n");
+                            }
+                            break;
+                        case "3":
+                            string title = "";
+                            while (string.IsNullOrEmpty(title)) {
+                                Console.Write("Введіть назву вакансії: ");
+                                title = Console.ReadLine();
+                                if (string.IsNullOrEmpty(title)) {
+                                    Console.WriteLine("Назва вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                                }
+                            }
+                            position.Title = title;
+                            break;
+                        case "4":
+                            string description = "";
+                            while (string.IsNullOrEmpty(description)) {
+                                Console.Write("Введіть опис вакансії: ");
+                                description = Console.ReadLine();
+                                if (string.IsNullOrEmpty(description)) {
+                                    Console.WriteLine("Опис вакансії не може бути порожнім. Будь ласка, спробуйте ще раз.");
+                                }
+                            }
+                            position.Description = description;
+                            break;
+                        case "5":
+                            string salary = "";
+                            while (string.IsNullOrEmpty(salary)) {
+                                Console.Write("Введіть зарплату для вакансії: ");
+                                salary = Console.ReadLine();
+                                if (string.IsNullOrEmpty(salary)) {
+                                    Console.WriteLine("Зарплата для вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                                }
+                            }
+                            position.Salary = salary;
+                            break;
+                        case "6":
+                            Advertisement(position);
+                            break;
+                        case "0":
+                            // Вийти
+                            return;
+                        default:
+                            Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                            break;
+                    }
 
+                }
+
+            }
+
+        }
+        void Advertisement(Position position) {
+            IAdvertisement advertisement = null!;
+            bool exit = false;
+            while (!exit) {
+                Console.WriteLine("\n--- Виберіть тип друку ---\n");
+                Console.WriteLine("1. .docx документ");
+                Console.WriteLine("2. .pdf документ");
+                Console.WriteLine("0. Вийти");
+
+                Console.Write("Ваш вибір: ");
+                string input = Console.ReadLine();
+
+                switch (input) {
+                    case "1":
+                        advertisement = new WordAdvertisement();
+                        exit = true;
+                        break;
+                    case "2":
+                        advertisement = new PdfAdvertisement();
+                        exit = true;
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                        break;
+                }
+            }
+            advertisement.GenerateAdvertisement(position);
         }
     }
 }

@@ -9,20 +9,33 @@ using System.Threading.Tasks;
 namespace JobDatabase {
     public class Position {
         public Guid UniqueId { get; init; }
-        string title;
-        string description;
-        string salary;
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Salary { get; set; }
         bool isProvidesHousing;
         List<IExpertRequirements> requirements;
+        public Firm Firm { get; set; }
 
         public string GetTitleAndSalary() {
-            return $"{title}    Зарплата:{salary}";
+            return $"{Title}    Зарплата:{Salary}";
+        }
+        public string GetDescription() {
+            return $"{Title}    Зарплата:{Salary}\n" +
+                   $"Контактна інформація: {Firm.ContactInfo}\n" +
+                   $"опис: {Description}\n" + GetRequirements();                   
+        }
+        string GetRequirements() {
+            string text = string.Empty;
+            foreach(var requirement in requirements) {
+                text += requirement;
+            }
+            return text;
         }
         public Position(string title, string description, string terms, bool isProvidesHousing) {
             UniqueId = Guid.NewGuid();
-            this.title = title;
-            this.description = description;
-            salary = terms;
+            this.Title = title;
+            this.Description = description;
+            Salary = terms;
             this.isProvidesHousing = isProvidesHousing;
             requirements = new List<IExpertRequirements>();
         }
