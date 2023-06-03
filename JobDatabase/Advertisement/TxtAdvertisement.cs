@@ -9,7 +9,7 @@ using JobDatabase.Advertisement;
 
 namespace JobDatabase
 {
-    public class PdfAdvertisement : IAdvertisement {
+    public class TxtAdvertisement : IAdvertisement {
         public void GenerateAdvertisement(Position position) {
             string directoryPath = String.Empty;
             while (String.IsNullOrWhiteSpace(directoryPath)) {

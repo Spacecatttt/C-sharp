@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JobDatabase.Firm">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <AssociationLine Name="Vacancies" Type="System.Collections.Generic.List&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.188" Y="3.5" />
+        <Point X="8.188" Y="2.316" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Firm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Vacancies" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="JobDatabase.InputProcessing">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAIABACAIAACABAAAAQAAAAQAAAAAAAAAAACASAA=</HashCode>
+      <FileName>InputProcessing.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="jobDatabase" />
+      <Field Name="archive" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="JobDatabase.JobDatabase">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <AssociationLine Name="firms" Type="System.Collections.Generic.List&lt;T&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="4.447" />
+        <Point X="5.875" Y="4.447" />
+        <Point X="5.875" Y="2.691" />
+        <Point X="7.125" Y="2.691" />
+        <Point X="7.125" Y="2.316" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACAAAgAAAAAAAAAAAAAAAAAAEACAAAAAAAA=</HashCode>
+      <FileName>JobDatabase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="firms" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="JobDatabase.Position">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACAAAAAgAEAAIACAABgAAAAABAACAAAAAAAgQAE=</HashCode>
+      <FileName>Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JobDatabase.Archive">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAACAAAAIAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Archive.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="archivedPositions" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="JobDatabase.Expert_requirements.TechnicalSkills">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expert requirements\TechnicalSkills.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JobDatabase.Experience">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAgAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expert requirements\Experience.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JobDatabase.Education">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAQAAAAAAEABAAAQAAAAAAA=</HashCode>
+      <FileName>Expert requirements\Education.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JobDatabase.Expert_requirements.CommunicationSkills">
+    <Position X="16.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expert requirements\CommunicationSkills.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JobDatabase.TxtAdvertisement">
+    <Position X="2.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Advertisement\TxtAdvertisement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JobDatabase.WordAdvertisement">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Advertisement\WordAdvertisement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="System.Collections.Generic.List&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="JobDatabase.IExpertRequirements" Collapsed="true">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expert requirements\IExpertRequirements.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JobDatabase.Advertisement.IAdvertisement" Collapsed="true">
+    <Position X="1.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Advertisement\IAdvertisement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9.13" />
+</ClassDiagram>

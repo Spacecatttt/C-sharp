@@ -20,8 +20,5 @@ namespace JobDatabase {
             Vacancies.Add(position);
             position.Firm = this;
         }
-        public void RemoveVacancy(Position position) {
-            Vacancies.Remove(position);
-        }
     }
 }

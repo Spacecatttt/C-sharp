@@ -19,5 +19,8 @@ namespace JobDatabase {
         public void DeleteArchived(Position position) {
             archivedPositions.Remove(position);
         }
+        public int GetCount() {
+            return archivedPositions.Count; 
+        }
     }
 }

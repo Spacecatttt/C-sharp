@@ -367,7 +367,7 @@ namespace JobDatabase {
                         exit = true;
                         break;
                     case "2":
-                        advertisement = new PdfAdvertisement();
+                        advertisement = new TxtAdvertisement();
                         exit = true;
                         break;
                     case "0":
