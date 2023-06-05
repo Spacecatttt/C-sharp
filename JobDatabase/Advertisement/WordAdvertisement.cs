@@ -18,7 +18,7 @@ namespace JobDatabase
                 directoryPath = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(directoryPath)) {
-                    Console.WriteLine("Шлях не може бути порожнім.\n");
+                    Console.WriteLine("Порожній шлях.\n");
                     break;
                 }
                 if (!Directory.Exists(directoryPath)) {

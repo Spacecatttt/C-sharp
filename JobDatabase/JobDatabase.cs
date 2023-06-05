@@ -35,7 +35,7 @@ namespace JobDatabase {
             if (positions.Count == 0)
                 Console.WriteLine("\nВакансій немає");
             else if(positions.Count < start) 
-                Console.WriteLine("\nБільше вакансій немає");
+                Console.WriteLine("\nЦе всі вакансії на зараз");
             else {
                 int end = Math.Min(start + 5, positions.Count);
                 for (int i = start; i < end; i++) {

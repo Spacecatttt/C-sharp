@@ -15,7 +15,7 @@ namespace JobDatabase.Expert_requirements {
             string name = string.Empty;
 
             while (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name)) {
-                Console.Write("Введіть назву технічного навичку: ");
+                Console.Write("Введіть навичку: ");
                 name = Console.ReadLine();
             }
 

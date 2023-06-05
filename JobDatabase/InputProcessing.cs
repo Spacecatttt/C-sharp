@@ -14,31 +14,32 @@ namespace JobDatabase {
             bool exit = false;
 
             while (!exit) {
-                Console.WriteLine("\n--- Меню: ---");
-                Console.WriteLine("1. Допомога");
-                Console.WriteLine("2. Зареєструвати вакансію");
-                Console.WriteLine("3. Пошук вакансії");
-                Console.WriteLine("0. Вихід");
+                Console.WriteLine("\n** Меню: **");
+                Console.WriteLine("1 - Допомога");
+                Console.WriteLine("2 - Зареєструвати вакансію");
+                Console.WriteLine("3 - Пошук вакансії");
+                Console.WriteLine("0 - Завершии сесію");
                 Console.Write("Виберіть опцію: ");
                 string input = Console.ReadLine();
 
                 switch (input) {
                     case "1":
-                        // Дії для опції "Допомога"
+                        // Допомога
                         Help();
                         break;
                     case "2":
-                        // Дії для опції "Зареєструвати вакансію"
+                        // Зареєстрування вакансії
                         RegisterVacancy();
                         break;
                     case "3":
-                        // Дії для опції "Пошук вакансії"
+                        // Пошук вакансії
                         SearchVacancy();
                         break;
                     case "0":
                         exit = true;
                         break;
                     default:
+                        // Якщо неправильні дані
                         Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
                         break;
                 }
@@ -46,11 +47,12 @@ namespace JobDatabase {
         }
         void Help() {
             Console.WriteLine("Інструкція:");
-            Console.WriteLine("Для вибору опції, введіть відповідний номер меню і натисніть Enter.");
-            Console.WriteLine("1. Допомога - виводить інструкцію щодо використання програми.");
-            Console.WriteLine("2. Зареєструвати вакансію - дозволяє користувачеві зареєструвати нову вакансію.");
-            Console.WriteLine("3. Пошук вакансії - дозволяє користувачеві шукати вакансії за певними критеріями.");
-            Console.WriteLine("0. Вихід - виходить з програми.");
+            Console.WriteLine("Для вибору опції, введіть відповідний номер меню та натисніть Enter.");
+            Console.WriteLine("1 - Допомога. Виводить інструкцію з використання програми.");
+            Console.WriteLine("2 - Зареєструвати вакансію. Користувач-роботодавець має змогу зареєструвати вакансію.");
+            Console.WriteLine("3 - Пошук вакансії. користувач-найманець шукає бажану вакансію.");
+            Console.WriteLine("0 - Завершити сесію. Завершення програми");
+            Console.WriteLine("У проміжних станах програми (не в головному меню), '0' означає перехід до попереднього кроку.");
             Console.WriteLine();
         }
         void RegisterVacancy() {
@@ -64,15 +66,15 @@ namespace JobDatabase {
                 firm.AddVacancy(position);
             else
                 return;
-            Console.WriteLine("\n--- Вакансія успішно зареєстрована ---\n");
+            Console.WriteLine("\n** Вакансію створено **\n");
         }
         Firm? TakeFirm() {
-            Console.WriteLine("Фірма вже існує?");
+            Console.WriteLine("Чи існує фірма в базі?");
             while (true) {
-                Console.WriteLine("1. Так");
-                Console.WriteLine("2. Ні");
-                Console.WriteLine("0. Вихід");
-                Console.Write("Виберіть опцію: ");
+                Console.WriteLine("1 - Так");
+                Console.WriteLine("2 - Ні");
+                Console.WriteLine("0 - Повернення до головного меню");
+                Console.Write("Оберіть опцію: ");
                 string input = Console.ReadLine();
                 switch (input) {
                     case "1":
@@ -80,9 +82,8 @@ namespace JobDatabase {
                         while (string.IsNullOrEmpty(name)) {
                             Console.Write("Введіть назву фірми: ");
                             name = Console.ReadLine();
-
                             if (string.IsNullOrEmpty(name)) {
-                                Console.WriteLine("Назва фірми не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                                Console.WriteLine("Немає назви. Спробуйте ввести назву ще раз.");
                             }
                         }
                         try {
@@ -95,7 +96,7 @@ namespace JobDatabase {
                     case "0":
                         return null;
                     default:
-                        Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                        Console.WriteLine("Невідома операція.Використовуйте лише зазначені кнопки.");
                         break;
                 }
             }
@@ -103,12 +104,12 @@ namespace JobDatabase {
         Firm FindFirm(string name) {
             bool status = jobDatabase.TryGetFirm(name, out var firm);
             if (!status) {
-                throw new Exception("Такої фірми не існує");
+                throw new Exception("Такої фірми не існує.");
             } else
                 return firm!;
         }
         Firm? CreateFirm() {
-            Console.WriteLine("\n--- Створення нової фірми ---");
+            Console.WriteLine("\nСтворення нової фірми ...");
             string name = "";
             string contactInfo = "";
 
@@ -117,7 +118,7 @@ namespace JobDatabase {
                 name = Console.ReadLine();
 
                 if (string.IsNullOrEmpty(name)) {
-                    Console.WriteLine("Назва фірми не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                    Console.WriteLine("Немає назви. Спробуйте ввести назву ще раз.");
                 }
             }
             while (string.IsNullOrEmpty(contactInfo)) {
@@ -125,7 +126,7 @@ namespace JobDatabase {
                 contactInfo = Console.ReadLine();
 
                 if (string.IsNullOrEmpty(contactInfo)) {
-                    Console.WriteLine("Контактна інформація фірми не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                    Console.WriteLine("Немає інформації. Спробуйте додати інформацію фірми ще раз");
                 }
             }
             Firm? firm = null;
@@ -134,13 +135,13 @@ namespace JobDatabase {
             }
             catch { }
             if (firm is Firm) {
-                Console.WriteLine("Така фірма вже існує. Бажаєте використовувати її чи повернутися до головного меню?");
+                Console.WriteLine("Така фірма вже існує. Додати вакансію від цієї фірми?");
                 bool exit = false;
 
                 while (!exit) {
-                    Console.WriteLine($"1. Використовувати фірму {firm.Name}");
-                    Console.WriteLine("2. Повернутися до головного меню");
-                    Console.WriteLine("Виберіть опцію: ");
+                    Console.WriteLine($"1.Додати вакансію {firm.Name}");
+                    Console.WriteLine("2. Повернутися назад");
+                    Console.WriteLine("Оберіть опцію: ");
                     string input = Console.ReadLine();
                     switch (input) {
                         case "1":
@@ -148,17 +149,17 @@ namespace JobDatabase {
                         case "2":
                             return null;
                         default:
-                            Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                            Console.WriteLine("Некоректна операція. Спробуйте ще раз.");
                             break;
                     }
                 }
             }
-            Console.WriteLine("\n--- Фірма успішно створена ---\n");
+            Console.WriteLine("\n** Фірму створено **\n");
             return new Firm(name, contactInfo);
         }
         Position? TakePosition() {
-            Console.WriteLine("\n--- Створення нової вакансії ---\n");
-            Console.WriteLine("0 - Повернутися у головне меню (вакансія не створиться)");
+            Console.WriteLine("\n** Створення нової вакансії **\n");
+            Console.WriteLine("0 - Повернення до головного меню (вакансія не збережеться)");
             string title = "";
             string description = "";
             string salary = "";
@@ -169,7 +170,7 @@ namespace JobDatabase {
                 if (title == "0")
                     return null;
                 if (string.IsNullOrEmpty(title)) {
-                    Console.WriteLine("Назва вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                    Console.WriteLine("Назва відсутня. Спробуйте ще раз.");
                 }
             }
             while (string.IsNullOrEmpty(description)) {
@@ -178,23 +179,23 @@ namespace JobDatabase {
                 if (description == "0")
                     return null;
                 if (string.IsNullOrEmpty(description)) {
-                    Console.WriteLine("Опис вакансії не може бути порожнім. Будь ласка, спробуйте ще раз.");
+                    Console.WriteLine("Відсутній опис. Спробуйте ще раз.");
                 }
             }
             while (string.IsNullOrEmpty(salary)) {
-                Console.Write("Введіть зарплату для вакансії: ");
+                Console.Write("Введіть зарплату : ");
                 salary = Console.ReadLine();
                 if (string.IsNullOrEmpty(salary)) {
-                    Console.WriteLine("Зарплата для вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                    Console.WriteLine("Відсутні дані щодо зарплати. Спробуйте ще раз");
                 }
             }
             bool isProvidesHousing = false;
             bool exit = false;
             while (!exit) {
-                Console.WriteLine("Чи надається житло для цієї вакансії?");
-                Console.WriteLine("1. Tak");
-                Console.WriteLine("2. Ні");
-                Console.Write("Виберіть опцію: ");
+                Console.WriteLine("Чи надається житло?");
+                Console.WriteLine("1 - Taк");
+                Console.WriteLine("2 - Ні");
+                Console.Write("Оберіть опцію: ");
                 string input = Console.ReadLine();
                 switch (input) {
                     case "1":
@@ -216,9 +217,9 @@ namespace JobDatabase {
             exit = false;
             while (!exit) {
                 Console.WriteLine("Бажаєте встановити вимоги до фахівця?");
-                Console.WriteLine("1. Tak");
-                Console.WriteLine("2. Ні");
-                Console.Write("Виберіть опцію: ");
+                Console.WriteLine("1 - Taк");
+                Console.WriteLine("2 - Ні");
+                Console.Write("Оберіть опцію: ");
                 string input = Console.ReadLine();
                 switch (input) {
                     case "1":
@@ -234,7 +235,7 @@ namespace JobDatabase {
                 }
             }
 
-            Console.WriteLine("\n--- Вакансія успішно створена ---\n");
+            Console.WriteLine("\n** Вакансію створено **\n");
 
             return newPosition;
 
@@ -244,11 +245,11 @@ namespace JobDatabase {
             jobDatabase.PrintPosition(startIndex);
             startIndex += 5;
             while (true) {
-                Console.WriteLine("\n--- Що далі? ---\n");
-                Console.WriteLine("1. Вивести ще 5 вакансій");
-                Console.WriteLine("2. Редагувати вакансію");
-                Console.WriteLine("0. Вихід");
-                Console.Write("Виберіть опцію: ");
+                Console.WriteLine("\n** Оберіть дію **\n");
+                Console.WriteLine("1 - Вивести ще 5 вакансій");
+                Console.WriteLine("2 - Редагувати вакансію");
+                Console.WriteLine("0 - Повернення назад");
+                Console.Write("Оберіть опцію: ");
                 string input = Console.ReadLine();
                 switch (input) {
                     case "1":
@@ -275,20 +276,19 @@ namespace JobDatabase {
             }
             var position = jobDatabase.GetPosition(input);
             if (position == null) {
-                Console.WriteLine("Такої вакансії немає");
+                Console.WriteLine("Вакансії з таким номером не існує.");
                 return;
             } else {
                 Console.WriteLine(position.GetDescription());
                 while (true) {
-                    Console.WriteLine("\n--- Виберіть дію ---\n");
-                    Console.WriteLine("1. Архівувати");
-                    Console.WriteLine("2. Видалити");
-                    Console.WriteLine("3. Змінити назву");
-                    Console.WriteLine("4. Змінити опис");
-                    Console.WriteLine("5. Змінити зарплату");
-                    Console.WriteLine("6. Створення файлу вакансії для друку");
-                    Console.WriteLine("0. Вийти");
-
+                    Console.WriteLine("\n** Оберіть дію **\n");
+                    Console.WriteLine("1 - Архівувати");
+                    Console.WriteLine("2 - Видалити");
+                    Console.WriteLine("3 - Змінити назву");
+                    Console.WriteLine("4 - Змінити опис");
+                    Console.WriteLine("5 - Змінити зарплату");
+                    Console.WriteLine("6 - Створення файлу вакансії для друку");
+                    Console.WriteLine("0 - Повернутися назад");
                     Console.Write("Ваш вибір: ");
                     input = Console.ReadLine();
                     switch (input) {
@@ -298,7 +298,7 @@ namespace JobDatabase {
                             break;
                         case "2":
                             if (position.Firm.Vacancies.Remove(position)) {
-                                Console.WriteLine("\n--- Вакансія успішно видалена ---\n");
+                                Console.WriteLine("\n** Вакансію видалено **\n");
                             }
                             break;
                         case "3":
@@ -307,7 +307,7 @@ namespace JobDatabase {
                                 Console.Write("Введіть назву вакансії: ");
                                 title = Console.ReadLine();
                                 if (string.IsNullOrEmpty(title)) {
-                                    Console.WriteLine("Назва вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                                    Console.WriteLine("Назва відсутня. Спробуйте ще раз");
                                 }
                             }
                             position.Title = title;
@@ -318,7 +318,7 @@ namespace JobDatabase {
                                 Console.Write("Введіть опис вакансії: ");
                                 description = Console.ReadLine();
                                 if (string.IsNullOrEmpty(description)) {
-                                    Console.WriteLine("Опис вакансії не може бути порожнім. Будь ласка, спробуйте ще раз.");
+                                    Console.WriteLine("Опис відсутній. Спробуйте ще раз.");
                                 }
                             }
                             position.Description = description;
@@ -329,7 +329,7 @@ namespace JobDatabase {
                                 Console.Write("Введіть зарплату для вакансії: ");
                                 salary = Console.ReadLine();
                                 if (string.IsNullOrEmpty(salary)) {
-                                    Console.WriteLine("Зарплата для вакансії не може бути порожньою. Будь ласка, спробуйте ще раз.");
+                                    Console.WriteLine("Відсутні дані щодо зарплати. Спробуйте ще раз.");
                                 }
                             }
                             position.Salary = salary;
@@ -344,21 +344,17 @@ namespace JobDatabase {
                             Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
                             break;
                     }
-
                 }
-
             }
-
         }
         void Advertisement(Position position) {
             IAdvertisement advertisement = null!;
             bool exit = false;
             while (!exit) {
-                Console.WriteLine("\n--- Виберіть тип друку ---\n");
-                Console.WriteLine("1. .docx документ");
-                Console.WriteLine("2. .txt документ");
-                Console.WriteLine("0. Вийти");
-
+                Console.WriteLine("\n** оберіть формат текстового документа **\n");
+                Console.WriteLine("1 - .docx документ");
+                Console.WriteLine("2 - .txt документ");
+                Console.WriteLine("0 - Повернутися назад");
                 Console.Write("Ваш вибір: ");
                 string input = Console.ReadLine();
 
@@ -374,7 +370,7 @@ namespace JobDatabase {
                     case "0":
                         return;
                     default:
-                        Console.WriteLine("Неправильний вибір. Спробуйте ще раз.");
+                        Console.WriteLine("Невірна операція. Спробуйте ще раз.");
                         break;
                 }
             }

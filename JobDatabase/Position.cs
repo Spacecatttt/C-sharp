@@ -49,12 +49,12 @@ namespace JobDatabase {
         }
         public void SetRequirements() {
             while (true) {
-                Console.WriteLine("\nВиберіть скіл для встановлення:");
-                Console.WriteLine("1. Досвід");
-                Console.WriteLine("2. Освіта");
-                Console.WriteLine("3. Технічні навички");
-                Console.WriteLine("4. Комунікаційні навички");
-                Console.WriteLine("0. Вихід");
+                Console.WriteLine("\nОберіть запропоновані критерії:");
+                Console.WriteLine("1 - Досвід");
+                Console.WriteLine("2 - Освіта");
+                Console.WriteLine("3 - Технічні навички");
+                Console.WriteLine("4 - Комунікаційні навички");
+                Console.WriteLine("0 - Вихід");
                 Console.Write("Ваш вибір: ");
                 string input = Console.ReadLine();
 

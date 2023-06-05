@@ -35,12 +35,12 @@ namespace JobDatabase {
             EducationLevel level;
 
             while (!IsValidEducationLevel(input)) {
-                Console.WriteLine("Виберіть рівень освіти:");
-                Console.WriteLine("1. Без освіти");
-                Console.WriteLine("2. Середня закінчена");
-                Console.WriteLine("3. Вища не закінчена");
-                Console.WriteLine("4. Ступінь бакалавра");
-                Console.WriteLine("5. Магістратура");
+                Console.WriteLine("Оберіть ступінь освіти:");
+                Console.WriteLine("1 - Відсутній");
+                Console.WriteLine("2 - Загальна середня.");
+                Console.WriteLine("3 - Здобуття бакалавра");
+                Console.WriteLine("4 - Ступінь бакалавра");
+                Console.WriteLine("5 - Магістратура");
                 Console.Write("Ваш вибір: ");
                 input = Console.ReadLine();
             }

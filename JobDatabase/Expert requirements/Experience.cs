@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobDatabase {
     public class Experience : IExpertRequirements {
-        public string Name { get { return $"Досвід: посада {Position} - протягом {Duration}" ; } }
+        public string Name { get { return $"Досвід: посада {Position} - досвід(час) {Duration}" ; } }
         public string Position { get; set; }
         public string Duration { get; set; }
         public Experience(string name, string duration) {
@@ -17,7 +17,7 @@ namespace JobDatabase {
         public static Experience Create() {
             Console.Write("Введіть посаду: ");
             string name = Console.ReadLine();
-            Console.Write("Введіть тривалість досвіду: ");
+            Console.Write("Введіть дані досвіду(час): ");
             string duration = Console.ReadLine();
 
             return new Experience(name, duration);
