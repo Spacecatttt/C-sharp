@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\T480\\source\\repos\\C#\\JobDatabase\\JobDatabase.csproj": {}
   },
   "projects": {
@@ -19,6 +20,22 @@
         "configFilePaths": [
           "C:\\Users\\T480\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+    "D:\\VS_progs\\C-sharp\\JobDatabase\\JobDatabase.csproj": {}
+  },
+  "projects": {
+    "D:\\VS_progs\\C-sharp\\JobDatabase\\JobDatabase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\VS_progs\\C-sharp\\JobDatabase\\JobDatabase.csproj",
+        "projectName": "JobDatabase",
+        "projectPath": "D:\\VS_progs\\C-sharp\\JobDatabase\\JobDatabase.csproj",
+        "packagesPath": "C:\\Users\\Holac\\.nuget\\packages\\",
+        "outputPath": "D:\\VS_progs\\C-sharp\\JobDatabase\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Holac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> origin/JobDatabase
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +98,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> origin/JobDatabase
         }
       }
     }
