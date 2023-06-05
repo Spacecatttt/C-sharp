@@ -267,6 +267,7 @@ namespace JobDatabase {
             }
         }
         void ActionsWithVacancy() {
+            Console.OutputEncoding = Encoding.UTF8;
             string input = String.Empty;
             while (String.IsNullOrWhiteSpace(input)) {
                 Console.Write("Ведіть номер вакансії: ");

@@ -113,12 +113,6 @@
   </Class>
   <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
     <Position X="7" Y="1.75" Width="1.5" />
-    <NestedTypes>
-      <Class Name="System.Collections.Generic.List&lt;T&gt;.Enumerator" Collapsed="true">
-        <TypeIdentifier />
-        <Lollipop Position="0.2" />
-      </Class>
-    </NestedTypes>
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>

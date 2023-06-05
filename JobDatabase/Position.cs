@@ -15,7 +15,14 @@ namespace JobDatabase {
         bool isProvidesHousing;
         List<IExpertRequirements> requirements;
         public Firm Firm { get; set; }
-
+        public Position(string title, string description, string terms, bool isProvidesHousing) {
+            UniqueId = Guid.NewGuid();
+            this.Title = title;
+            this.Description = description;
+            Salary = terms;
+            this.isProvidesHousing = isProvidesHousing;
+            requirements = new List<IExpertRequirements>();
+        }
         public string GetTitleAndSalary() {
             return $"Посада: {Title}    Зарплата: {Salary}";
         }
@@ -26,18 +33,13 @@ namespace JobDatabase {
         }
         string GetRequirements() {
             string text = string.Empty;
-            foreach(var requirement in requirements) {
-                text += requirement;
+            text += "Досвід: " + String.Join(", ",requirements.Where(x => x is Experience).Select(x => x.Name))+ "\n";
+            text += "Комунікаційні навички: " + String.Join(", ", requirements.Where(x => x is CommunicationSkills).Select(x => x.Name)) + "\n";
+            text += "Техніні навички: " + String.Join(", ", requirements.Where(x => x is TechnicalSkills).Select(x => x.Name)) + "\n";
+            foreach (var requirement in requirements.Where(x => x is Education)) {
+                text += $"{requirement.Name}\n";
             }
             return text;
-        }
-        public Position(string title, string description, string terms, bool isProvidesHousing) {
-            UniqueId = Guid.NewGuid();
-            this.Title = title;
-            this.Description = description;
-            Salary = terms;
-            this.isProvidesHousing = isProvidesHousing;
-            requirements = new List<IExpertRequirements>();
         }
         public void AddRequirements(IExpertRequirements requirement) {
             requirements.Add(requirement);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobDatabase.Expert_requirements {
     public class CommunicationSkills : IExpertRequirements {
-        public string Name { get { return "Комунікаційні навички: " + Skill + ";"; } }
+        public string Name { get { return   Skill; } }
         public string Skill { get; set; }
         public CommunicationSkills(string name) {
             Skill = name;

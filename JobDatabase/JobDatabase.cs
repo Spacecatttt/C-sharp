@@ -27,6 +27,7 @@ namespace JobDatabase {
             return positions.FirstOrDefault(x => x.UniqueId.ToString() == id);
         }
         public void PrintPosition(int start) {
+            Console.OutputEncoding = Encoding.UTF8;
             List<Position> positions = new List<Position>();
             foreach (var firm in firms)
                 positions.AddRange(firm.Vacancies);
