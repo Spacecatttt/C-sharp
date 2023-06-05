@@ -15,22 +15,6 @@ namespace JobDatabase {
         bool isProvidesHousing;
         List<IExpertRequirements> requirements;
         public Firm Firm { get; set; }
-
-        public string GetTitleAndSalary() {
-            return $"Посада: {Title}    Зарплата: {Salary}";
-        }
-        public string GetDescription() {
-            return $"Посада: {Title}    Зарплата: {Salary}\n" +
-                   $"Контактна інформація: {Firm.ContactInfo}\n" +
-                   $"Опис: {Description}\n" + GetRequirements();                   
-        }
-        string GetRequirements() {
-            string text = string.Empty;
-            foreach(var requirement in requirements) {
-                text += requirement;
-            }
-            return text;
-        }
         public Position(string title, string description, string terms, bool isProvidesHousing) {
             UniqueId = Guid.NewGuid();
             this.Title = title;
@@ -38,6 +22,27 @@ namespace JobDatabase {
             Salary = terms;
             this.isProvidesHousing = isProvidesHousing;
             requirements = new List<IExpertRequirements>();
+        }
+        public string GetTitleAndSalary() {
+            return $"Посада: {Title}    Зарплата: {Salary}";
+        }
+        public string GetDescription() {
+            return $"Посада: {Title}    Зарплата: {Salary}\n" +
+                   $"Контактна інформація: {Firm.ContactInfo}\n" +
+                   $"Опис: {Description}\n" + GetRequirements();
+        }
+        string GetRequirements() {
+            string text = string.Empty;
+            string experience = String.Join(", ", requirements.Where(x => x is Experience).Select(x => x.Name));
+            string communicationSkills = String.Join(", ", requirements.Where(x => x is CommunicationSkills).Select(x => x.Name));
+            string technicalSkills = String.Join(", ", requirements.Where(x => x is TechnicalSkills).Select(x => x.Name));
+            text += !String.IsNullOrWhiteSpace(experience) ? $"Досвід: {experience}\n" : "";
+            text += !String.IsNullOrWhiteSpace(communicationSkills) ? $"Комунікаційні навички: {communicationSkills}\n" : "";
+            text += !String.IsNullOrWhiteSpace(technicalSkills) ? $"Техніні навички: {technicalSkills}\n" : "";
+            foreach (var requirement in requirements.Where(x => x is Education)) {
+                text += $"{requirement.Name}\n";
+            }
+            return text;
         }
         public void AddRequirements(IExpertRequirements requirement) {
             requirements.Add(requirement);
