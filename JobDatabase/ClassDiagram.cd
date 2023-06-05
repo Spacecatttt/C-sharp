@@ -2,12 +2,6 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="JobDatabase.Firm">
     <Position X="7" Y="3.5" Width="1.5" />
-    <AssociationLine Name="Vacancies" Type="System.Collections.Generic.List&lt;T&gt;" FixedToPoint="true">
-      <Path>
-        <Point X="8.188" Y="3.5" />
-        <Point X="8.188" Y="2.316" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Firm.cs</FileName>
@@ -29,13 +23,14 @@
   </Class>
   <Class Name="JobDatabase.JobDatabase">
     <Position X="4" Y="3.5" Width="1.5" />
-    <AssociationLine Name="firms" Type="System.Collections.Generic.List&lt;T&gt;" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="firms" Type="System.Collections.Generic.List&lt;T&gt;" ManuallyRouted="true">
       <Path>
-        <Point X="5.5" Y="4.447" />
-        <Point X="5.875" Y="4.447" />
-        <Point X="5.875" Y="2.691" />
-        <Point X="7.125" Y="2.691" />
-        <Point X="7.125" Y="2.316" />
+        <Point X="5.5" Y="4.446" />
+        <Point X="6.048" Y="4.446" />
+        <Point X="6.048" Y="2.433" />
+        <Point X="6.896" Y="2.433" />
+        <Point X="6.896" Y="2.438" />
+        <Point X="7" Y="2.438" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -112,7 +107,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
-    <Position X="7" Y="1.75" Width="1.5" />
+    <Position X="7" Y="2" Width="1.75" />
     <NestedTypes>
       <Class Name="System.Collections.Generic.List&lt;T&gt;.Enumerator" Collapsed="true">
         <TypeIdentifier />
@@ -122,15 +117,15 @@
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="JobDatabase.IExpertRequirements" Collapsed="true">
-    <Position X="14" Y="2" Width="1.5" />
+  <Interface Name="JobDatabase.IExpertRequirements">
+    <Position X="14" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expert requirements\IExpertRequirements.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="JobDatabase.Advertisement.IAdvertisement" Collapsed="true">
-    <Position X="1.25" Y="4.75" Width="1.5" />
+  <Interface Name="JobDatabase.Advertisement.IAdvertisement">
+    <Position X="1.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Advertisement\IAdvertisement.cs</FileName>

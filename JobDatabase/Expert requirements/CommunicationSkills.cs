@@ -14,7 +14,7 @@ namespace JobDatabase.Expert_requirements {
         public static CommunicationSkills Create() {
             string name = string.Empty;
             while (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(name)) {
-                Console.Write("Введіть назву комунікаційного навичку: ");
+                Console.Write("Введіть навичку: ");
                 name = Console.ReadLine();
             }
             return new CommunicationSkills(name);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobDatabase.Expert_requirements {
     public class TechnicalSkills : IExpertRequirements {
-        public string Name { get { return "Техніні навички: " + Skill + ";"; } }
+        public string Name { get { return "Технічні навички " + Skill + ";"; } }
         public string Skill { get; set; }
         public TechnicalSkills(string name) {
             Skill = name;
@@ -15,7 +15,7 @@ namespace JobDatabase.Expert_requirements {
             string name = string.Empty;
 
             while (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name)) {
-                Console.Write("Введіть назву технічного навичку: ");
+                Console.Write("Введіть навичку: ");
                 name = Console.ReadLine();
             }
 
