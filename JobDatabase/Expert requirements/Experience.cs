@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobDatabase {
     public class Experience : IExpertRequirements {
-        public string Name { get { return $"Досвід: посада {Position} - досвід(час) {Duration}" ; } }
+        public string Name { get { return $"посада {Position} - час {Duration}" ; } }
         public string Position { get; set; }
         public string Duration { get; set; }
         public Experience(string name, string duration) {

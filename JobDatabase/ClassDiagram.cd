@@ -107,12 +107,6 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Position X="7" Y="1.75" Width="1.5" />
-=======
-=======
->>>>>>> origin/JobDatabase
     <Position X="7" Y="2" Width="1.75" />
     <NestedTypes>
       <Class Name="System.Collections.Generic.List&lt;T&gt;.Enumerator" Collapsed="true">
